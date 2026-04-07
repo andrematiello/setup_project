@@ -94,6 +94,31 @@ for cmd in $COMMANDS; do
 done
 echo ""
 
+# Baixar rules
+echo "   Baixando rules..."
+mkdir -p .claude/rules
+RULES="security.md auth.md database.md typescript.md testing.md components.md code-style.md"
+for rule in $RULES; do
+  download "templates/rules/$rule" ".claude/rules/$rule"
+done
+echo ""
+
+# Baixar skills
+echo "   Baixando skills..."
+SKILLS="code-review security-check update-docs new-migration"
+for skill in $SKILLS; do
+  mkdir -p ".claude/skills/$skill"
+  download "templates/skills/$skill/SKILL.md" ".claude/skills/$skill/SKILL.md"
+done
+echo ""
+
+# Baixar docs templates
+echo "   Baixando templates de documentação..."
+mkdir -p docs
+download "templates/docs/changelog_internal.md" "docs/changelog_internal.md"
+download "templates/docs/onboarding_morning.md" "docs/onboarding_morning.md"
+echo ""
+
 # Baixar settings.json
 echo "   Baixando configurações..."
 download "templates/settings.json" ".claude/settings.json"

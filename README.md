@@ -5,7 +5,10 @@ Kit de configuração do ambiente Claude Code para projetos de software.
 Instala em qualquer projeto:
 - `CLAUDE.md` — especificação comportamental para o agente
 - `.claude/commands/` — protocolo operacional (fix, feature, deploy, release, etc.)
+- `.claude/rules/` — regras por domínio (segurança, banco, componentes, TypeScript, testes)
+- `.claude/skills/` — skills automáticas (code-review, security-check, update-docs, new-migration)
 - `.claude/settings.json` — permissões base
+- `docs/` — templates de changelog e onboarding
 
 ---
 
@@ -79,7 +82,24 @@ O agente vai:
 │   ├── deploy-check.md
 │   ├── done.md
 │   └── release.md
+├── rules/
+│   ├── security.md
+│   ├── auth.md
+│   ├── database.md
+│   ├── typescript.md
+│   ├── testing.md
+│   ├── components.md
+│   └── code-style.md
+├── skills/
+│   ├── code-review/SKILL.md
+│   ├── security-check/SKILL.md
+│   ├── update-docs/SKILL.md
+│   └── new-migration/SKILL.md
 └── settings.json
+
+docs/
+├── changelog_internal.md   ← log de sessões do agente
+└── onboarding_morning.md   ← checklist de retomada
 
 CLAUDE.md  ← gerado pelo /project:setup
 ```
@@ -88,11 +108,7 @@ CLAUDE.md  ← gerado pelo /project:setup
 
 ## Personalização
 
-Após o setup inicial, adicione conforme necessário:
-
-- `.claude/rules/` — regras detalhadas por domínio (auth, banco, componentes, etc.)
-- `.claude/skills/` — skills adicionais
-- `.claude/docs/` — documentação operacional interna
+Todos os arquivos instalados são pontos de partida. Itens marcados com `[ADAPTÁVEL]` devem ser ajustados ao projeto. Itens marcados com `[GENÉRICO]` funcionam sem modificação na maioria dos projetos.
 
 ---
 
