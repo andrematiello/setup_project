@@ -26,10 +26,16 @@ curl -O https://raw.githubusercontent.com/andrematiello/setup_project/main/setup
 bash setup.sh
 ```
 
-Para forçar sobrescrita de arquivos existentes:
+Para forçar sobrescrita de arquivos existentes (local):
 
 ```bash
 bash setup.sh --force
+```
+
+Via curl (sem prompt de confirmação):
+
+```bash
+curl -s https://raw.githubusercontent.com/andrematiello/setup_project/main/setup.sh | bash -s -- --force
 ```
 
 ---
