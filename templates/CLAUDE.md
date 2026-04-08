@@ -118,6 +118,25 @@ Faça apenas o que foi pedido. Não melhore o entorno.
 
 ## Comportamento do Agente
 
+### Paralelismo — regra padrão de execução
+
+Sempre que possível, execute operações em paralelo. Sequencial apenas quando há dependência real entre os passos.
+
+**Execute em paralelo:**
+- Leitura de múltiplos arquivos independentes
+- Buscas e greps sem dependência entre si
+- Downloads, análises e verificações simultâneas
+- Chamadas de ferramentas cujos resultados não dependem uns dos outros
+
+**Execute em sequência apenas quando:**
+- O resultado de um passo é entrada do próximo
+- A ordem afeta o estado do sistema (ex: criar antes de editar)
+- Há risco de conflito entre operações simultâneas
+
+**Sinal de alerta:** se você está executando operações independentes uma a uma, revise — provavelmente podem ser paralelas.
+
+---
+
 ### PARE e aguarde resposta antes de executar
 
 [definir — exemplos:]
