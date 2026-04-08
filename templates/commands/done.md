@@ -2,7 +2,7 @@
   COMANDO: /project:done
   QUANDO ACIONAR: fim de toda sessão com alteração em código, banco ou arquivos.
   Não se aplica a sessões apenas de consulta.
-  Chamado automaticamente pelo /project:deploy-check (Fase 1) quando tudo ✅.
+  QUEM ACIONA: usuário explicitamente | chamado automaticamente pelo /project:deploy-check (Fase 1) quando tudo ✅
   ETAPAS: [ADAPTÁVEL]
   1. Changelog → registra em docs/changelog_internal.md
   2. Documentação → valida e atualiza docs afetados
