@@ -37,6 +37,7 @@ Leia nesta ordem antes de começar qualquer trabalho:
 | TypeScript | `.claude/rules/typescript.md` |
 | Testes | `.claude/rules/testing.md` |
 | Estilo de código / commits | `.claude/rules/code-style.md` |
+| Documentação (changelog, business, README) | `.claude/rules/documentation.md` |
 | [definir: domínio específico do projeto] | `[definir: arquivo]` |
 
 ---

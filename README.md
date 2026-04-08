@@ -3,9 +3,10 @@
 Kit de configuração do ambiente Claude Code para projetos de software.
 
 Instala em qualquer projeto:
+
 - `CLAUDE.md` — especificação comportamental para o agente
 - `.claude/commands/` — protocolo operacional (fix, feature, deploy, release, etc.)
-- `.claude/rules/` — regras por domínio (segurança, banco, componentes, TypeScript, testes)
+- `.claude/rules/` — regras por domínio (segurança, banco, componentes, TypeScript, testes, documentação)
 - `.claude/skills/` — skills automáticas (code-review, security-check, update-docs, new-migration)
 - `.claude/settings.json` — permissões base
 - `docs/` — templates de changelog e onboarding
@@ -37,11 +38,12 @@ bash setup.sh --force
 
 Após a instalação, abra o projeto no Claude Code e execute:
 
-```
+```text
 /project:setup
 ```
 
 O agente vai:
+
 1. Ler o contexto do projeto (`package.json`, estrutura de pastas, configs de deploy, etc.)
 2. Detectar stack, gerenciador de pacotes e serviços externos
 3. Gerar um rascunho de `CLAUDE.md` adaptado ao projeto
@@ -69,7 +71,7 @@ O agente vai:
 
 ## Estrutura instalada
 
-```
+```text
 .claude/
 ├── commands/
 │   ├── setup.md
@@ -89,7 +91,8 @@ O agente vai:
 │   ├── typescript.md
 │   ├── testing.md
 │   ├── components.md
-│   └── code-style.md
+│   ├── code-style.md
+│   └── documentation.md
 ├── skills/
 │   ├── code-review/SKILL.md
 │   ├── security-check/SKILL.md

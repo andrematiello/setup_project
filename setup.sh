@@ -31,7 +31,7 @@ if [ -d ".claude" ] && [ "$FORCE" = false ]; then
   echo -e "${YELLOW}⚠  A pasta .claude já existe neste projeto.${NC}"
   echo "   Use --force para sobrescrever arquivos existentes."
   echo ""
-  read -rp "   Continuar mesmo assim? (s/N) " confirm
+  read -rp "   Continuar mesmo assim? (s/N) " confirm < /dev/tty
   if [[ ! "$confirm" =~ ^[sS]$ ]]; then
     echo "   Instalação cancelada."
     exit 0
@@ -97,7 +97,7 @@ echo ""
 # Baixar rules
 echo "   Baixando rules..."
 mkdir -p .claude/rules
-RULES="security.md auth.md database.md typescript.md testing.md components.md code-style.md"
+RULES="security.md auth.md database.md typescript.md testing.md components.md code-style.md documentation.md"
 for rule in $RULES; do
   download "templates/rules/$rule" ".claude/rules/$rule"
 done
