@@ -19,6 +19,12 @@ Instala em qualquer projeto:
 curl -s https://raw.githubusercontent.com/andrematiello/setup_project/main/setup.sh | bash
 ```
 
+> **Windows (Git Bash):** se o comando não produzir nenhuma saída, use `--ssl-no-revoke`:
+>
+> ```bash
+> curl -s --ssl-no-revoke https://raw.githubusercontent.com/andrematiello/setup_project/main/setup.sh | bash
+> ```
+
 Ou, se preferir inspecionar antes de executar:
 
 ```bash

@@ -39,6 +39,12 @@ if [ -d ".claude" ] && [ "$FORCE" = false ]; then
   echo ""
 fi
 
+# Detectar se curl usa schannel (Windows) e precisa de --ssl-no-revoke
+CURL_OPTS=""
+if curl --version 2>&1 | grep -qi "schannel"; then
+  CURL_OPTS="--ssl-no-revoke"
+fi
+
 # Detectar gerenciador de pacotes
 PKG_MANAGER="npm"
 PKG_RUN="npm run"
@@ -79,7 +85,7 @@ download() {
     return
   fi
 
-  if curl -sf "$REPO/$remote_path" -o "$local_path" 2>/dev/null; then
+  if curl -sf $CURL_OPTS "$REPO/$remote_path" -o "$local_path" 2>/dev/null; then
     echo -e "   ${GREEN}✓${NC} $local_path"
   else
     echo -e "   ${RED}✗ falhou ao baixar:${NC} $local_path"
