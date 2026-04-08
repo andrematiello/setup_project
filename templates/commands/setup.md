@@ -61,54 +61,159 @@ Se um item não puder ser inferido com segurança, marque como `[não detectado]
 
 Após a análise automática, apresente ao usuário **um único bloco** com todas as perguntas abaixo. Não faça uma por uma — entregue tudo de uma vez para que ele responda no ritmo dele.
 
-Informe que itens em branco serão preenchidos com um placeholder genérico e podem ser ajustados depois.
+Informe que:
+- Itens em branco usarão um placeholder genérico e podem ser ajustados depois
+- Respostas curtas, números das opções ou referências a arquivos (`@docs/arquivo.md`) são aceitas
+- Pode pular qualquer item escrevendo "–" ou "depois"
 
 ---
 
 **Apresente exatamente assim:**
 
 > Analisei o projeto e preciso de algumas informações que não consigo inferir sozinho.
-> Responda o que souber — o que ficar em branco usará um placeholder genérico.
+> Responda o que souber — o que ficar em branco usará placeholder genérico.
+> Pode responder com o número da opção, texto livre ou referenciar um arquivo (`@docs/arquivo.md`).
 >
-> **Sobre o produto:**
-> 1. Em uma frase, o que este projeto faz?
-> 2. Quem são os usuários? (ex: usuários finais pagantes, time interno, devs)
-> 3. Qual a URL de produção, se já existir?
+> ---
 >
-> **Regras absolutas (o que eu NUNCA devo fazer):**
-> 4. Liste as ações que são terminantemente proibidas neste projeto.
->    (ex: nunca edite migrations existentes, nunca use service_role no frontend, nunca delete sem confirmação)
->    Se não souber agora, escreva "definir depois".
+> **PRODUTO**
 >
-> **Áreas que exigem cuidado extra (pare e pergunte antes de agir):**
-> 5. Quais mudanças são sensíveis o suficiente para eu parar e pedir confirmação?
->    (ex: qualquer mudança em auth, banco, pagamentos, infraestrutura)
+> **1. Em uma frase, o que este projeto faz e para quem?**
+>    (ou indique um arquivo: `@docs/business.md`, `@README.md`, etc.)
 >
-> **Comportamento do agente:**
-> 6. Que tipo de mudanças posso executar diretamente, sem precisar confirmar?
->    (ex: bugs visuais, novos componentes isolados, ajustes de texto)
-> 7. Prefere que eu apresente um plano antes de implementações grandes, ou pode executar direto?
+> **2. Quem são os usuários neste momento?**
+>    a) usuários finais pagantes
+>    b) time interno / uso próprio
+>    c) beta testers / fase de testes
+>    d) outros desenvolvedores / API pública
+>    e) outro: ___
 >
-> **Preferências de sessão:**
-> 8. Em que idioma quer que eu responda? (ex: Português do Brasil, inglês)
-> 9. Prefere respostas curtas e diretas, ou explicações detalhadas?
-> 10. Tem atalhos de linguagem? (ex: "limpa isso" = remover código morto, "ta bom?" = code review)
+> **3. URLs do projeto:**
+>    - Dev / staging: (ex: dev.meuapp.com, localhost:3000)
+>    - Produção: (ex: meuapp.com — ou "ainda não existe")
 >
-> **Ambiente de desenvolvimento:**
-> 11. Qual SO e shell você usa? (ex: macOS / bash, Windows / Git Bash, Linux / zsh)
-> 12. Qual editor? (VS Code, Cursor, outro)
+> ---
 >
-> **Deploy e produção:**
-> 13. Qual branch aciona o deploy de produção?
-> 14. Há algum passo manual necessário após o push? (ex: rodar migrations, deploy de funções)
+> **REGRAS E LIMITES**
 >
-> **Documentação técnica:**
-> 15. Quais documentos existem em `docs/` e o que cada um cobre?
->     (Se ainda não existirem, escreva "criar depois")
+> **4. O que eu NUNCA devo fazer neste projeto?**
+>    Marque os que se aplicam e adicione os específicos do projeto:
+>    [ ] Nunca editar migration existente — sempre criar nova
+>    [ ] Nunca usar `service_role` no frontend
+>    [ ] Nunca deletar registros, tabelas ou arquivos sem confirmação explícita
+>    [ ] Nunca processar pagamento no client-side
+>    [ ] Nunca expor secrets em variáveis públicas (`VITE_`, `NEXT_PUBLIC_`)
+>    [ ] Nunca contornar RLS ou políticas de acesso como atalho
+>    [ ] Nunca alterar auth ou regras de acesso sem aprovação
+>    [ ] Outro: ___
 >
-> **Conclusão de sessão:**
-> 16. Qual comando deve ser executado ao final de toda sessão com alterações?
->     (ex: /project:done)
+> **5. Em quais áreas devo PARAR e pedir confirmação antes de agir?**
+>    Marque os que se aplicam:
+>    [ ] Autenticação / sessão / permissões
+>    [ ] Banco de dados (schema, migrations, policies)
+>    [ ] Pagamentos / integração financeira
+>    [ ] Infraestrutura / variáveis de ambiente / CI-CD
+>    [ ] Módulos compartilhados por mais de um domínio
+>    [ ] Deploy / edge functions
+>    [ ] Outro: ___
+>
+> **6. O que posso executar DIRETAMENTE, sem confirmar?**
+>    Marque os que se aplicam:
+>    [ ] Bugs visuais isolados sem efeito em dados
+>    [ ] Novos componentes em pasta de domínio correto
+>    [ ] Ajustes de texto e layout
+>    [ ] Novos hooks de query seguindo padrão existente
+>    [ ] Correção de tipo sem alterar lógica
+>    [ ] Atualização de documentação
+>    [ ] Outro: ___
+>
+> ---
+>
+> **COMPORTAMENTO DO AGENTE**
+>
+> **7. Como prefere que eu trabalhe em implementações grandes?**
+>    a) Apresente um plano detalhado, passo a passo, revise comigo antes de executar
+>    b) Execute direto e me mostre o resultado
+>    c) Depende da complexidade — use Plan Mode para mudanças arquiteturais
+>
+> **8. Nível de detalhe nas respostas:**
+>    a) Curto e direto — só o essencial
+>    b) Detalhado para tarefas complexas, curto para as simples
+>    c) Sempre detalhado, com contexto e raciocínio
+>
+> ---
+>
+> **PREFERÊNCIAS DE SESSÃO**
+>
+> **9. Idioma das respostas:**
+>    a) Português do Brasil
+>    b) Inglês
+>    c) Outro: ___
+>
+> **10. Atalhos de linguagem (opcional):**
+>    Exemplos comuns — confirme os que quer usar ou adicione os seus:
+>    - "limpa isso" → remover código morto e simplificar
+>    - "tá bom?" → code review com foco em segurança e padrões
+>    - "revisa isso" → análise crítica de implementação
+>    - "resumo" → explicação de alto nível sem detalhes de código
+>    - "do começo" → reexplique sem assumir contexto anterior
+>    Seus atalhos: ___
+>
+> ---
+>
+> **AMBIENTE**
+>
+> **11. Sistema operacional e shell:**
+>    a) macOS / zsh
+>    b) macOS / bash
+>    c) Windows / Git Bash
+>    d) Windows / PowerShell
+>    e) Linux / zsh
+>    f) Linux / bash
+>    g) Outro: ___
+>
+> **12. Editor principal:**
+>    a) VS Code
+>    b) Cursor
+>    c) Windsurf
+>    d) Antigravity
+>    e) Outro: ___
+>
+> ---
+>
+> **DEPLOY**
+>
+> **13. Qual branch aciona o deploy de produção?**
+>    a) main
+>    b) master
+>    c) production
+>    d) Outro: ___
+>
+> **14. Há passos manuais necessários após o push?**
+>    Marque os que se aplicam:
+>    [ ] Rodar migrations manualmente
+>    [ ] Deploy de Edge Functions
+>    [ ] Atualizar variáveis de ambiente em produção
+>    [ ] Notificar time / abrir PR para revisão
+>    [ ] Nenhum — deploy é totalmente automatizado
+>    [ ] Se necessário, pergunte antes de fazer push
+>    [ ] Outro: ___
+>
+> ---
+>
+> **DOCUMENTAÇÃO**
+>
+> **15. Documentos em `docs/` (vou verificar automaticamente — confirme ou corrija):**
+>    [listar o que detectei na Fase 1, se existir]
+>    Adicione o que ficou faltando ou escreva "verificar depois".
+>
+> ---
+>
+> **CONCLUSÃO DE SESSÃO**
+>
+> **16. Qual comando executar ao final de toda sessão com alterações?**
+>    a) /project:done (padrão — gera changelog e faz push)
+>    b) Outro: ___
 
 ---
 
