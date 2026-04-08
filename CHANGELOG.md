@@ -7,6 +7,30 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
 
 ## [Não lançado]
 
+## [0.3.0] — 2026-04-08
+
+### Adicionado
+- Modo `--update` no `setup.sh`: compara cada template com o arquivo local, atualiza os idênticos, instala os novos e registra os divergentes em `.claude/update-pending.txt`
+- Comando `/project:update-kit`: consolida arquivos divergentes arquivo por arquivo, classificando cada diferença em categorias objetivas (ADITIVO, PLACEHOLDER, PROJETO-ESPECÍFICO, MELHORIA, SEGURANÇA, CONFLITO, REMOÇÃO) e aguardando aprovação explícita do usuário a cada decisão
+- Skill `security-audit`: auditoria completa de segurança baseada em OWASP, NIST SSDF e Secure by Design — complementar ao `security-check`
+- Tabela `security-check` vs `security-audit` no README com critérios de uso de cada uma
+- Seção "Atualização" no README documentando o fluxo `--update` + `/project:update-kit`
+- `docs/business-domain.md` com decisões de produto do kit
+
+### Alterado
+
+- `templates/commands/start.md`: expandido com 5 fases estruturadas (Onboarding, Security, README, Business, Relatório), checklist diário de segurança integrado e relatório consolidado por sessão
+- `templates/CLAUDE.md`: instrução de início automático de sessão — Claude executa `/project:start` na primeira mensagem sem solicitar confirmação
+- `setup.sh`: detecção automática de curl com backend schannel (Windows) e aplicação de `--ssl-no-revoke` em todos os downloads internos
+- `setup.sh`: aviso ao encontrar `.claude` existente agora menciona `--update` como opção além de `--force`
+
+### Corrigido
+
+- `setup.sh` via `curl | bash`: `read` agora usa `< /dev/tty` para funcionar quando stdin é o pipe
+- Downloads internos do `setup.sh` falhavam silenciosamente no Windows por SSL (schannel) — corrigido com detecção automática de `CURL_OPTS`
+
+---
+
 ## [0.2.0] — 2026-04-08
 
 ### Adicionado

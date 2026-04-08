@@ -2,14 +2,47 @@
 
 Kit de configuração do ambiente Claude Code para projetos de software.
 
-Instala em qualquer projeto:
+Instala em qualquer projeto uma estrutura completa de comandos, regras por domínio, skills automáticas e templates de documentação — tudo configurado para que o agente opere com método, segurança e rastreabilidade desde o primeiro uso.
 
-- `CLAUDE.md` — especificação comportamental para o agente
-- `.claude/commands/` — protocolo operacional (fix, feature, deploy, release, etc.)
-- `.claude/rules/` — regras por domínio (segurança, banco, componentes, TypeScript, testes, documentação)
-- `.claude/skills/` — skills automáticas (code-review, security-check, update-docs, new-migration)
-- `.claude/settings.json` — permissões base
-- `docs/` — templates de changelog e onboarding
+---
+
+## Índice
+
+- [O que é instalado](#o-que-é-instalado)
+- [Instalação](#instalação)
+- [Atualização](#atualização)
+- [Primeiro uso](#primeiro-uso)
+- [Início automático de sessão](#início-automático-de-sessão)
+- [Comandos](#comandos)
+- [Skills automáticas](#skills-automáticas)
+- [Rules por domínio](#rules-por-domínio)
+- [Documentação instalada](#documentação-instalada)
+- [Catálogos de prompts-semente](#catálogos-de-prompts-semente)
+- [Estrutura completa instalada](#estrutura-completa-instalada)
+- [Personalização](#personalização)
+- [Requisitos](#requisitos)
+- [Contribuição](#contribuição)
+
+---
+
+## O que é instalado
+
+```text
+CLAUDE.md               ← especificação comportamental do agente (gerada em /project:setup)
+.claude/
+├── commands/           ← protocolo operacional: 11 comandos estruturados
+├── rules/              ← regras por domínio: 8 arquivos lidos sob demanda
+├── skills/             ← 5 skills automáticas disparadas por contexto
+└── settings.json       ← permissões base do agente
+
+docs/
+├── changelog_internal.md   ← log de sessões do agente
+└── onboarding_morning.md   ← checklist de retomada rápida
+
+templates/docs/
+├── commands-prompts.md     ← catálogo de prompts para regenerar comandos
+└── docs-prompts.md         ← catálogo de prompts para gerar documentação técnica
+```
 
 ---
 
@@ -106,6 +139,7 @@ O agente vai:
 | `/project:deploy-check` | Gate de qualidade antes de produção |
 | `/project:done` | Encerrar sessão com changelog e push |
 | `/project:release [versão]` | Publicar release formal |
+| `/project:update-kit` | Consolidar arquivos divergentes após `--update` |
 
 ---
 
@@ -123,7 +157,8 @@ O agente vai:
 │   ├── document.md
 │   ├── deploy-check.md
 │   ├── done.md
-│   └── release.md
+│   ├── release.md
+│   └── update-kit.md
 ├── rules/
 │   ├── security.md
 │   ├── auth.md
@@ -136,6 +171,7 @@ O agente vai:
 ├── skills/
 │   ├── code-review/SKILL.md
 │   ├── security-check/SKILL.md
+│   ├── security-audit/SKILL.md
 │   ├── update-docs/SKILL.md
 │   └── new-migration/SKILL.md
 └── settings.json
