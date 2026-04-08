@@ -46,6 +46,34 @@ curl -s https://raw.githubusercontent.com/andrematiello/setup_project/main/setup
 
 ---
 
+## Atualização
+
+Para atualizar o kit em um projeto já instalado:
+
+```bash
+curl -s --ssl-no-revoke https://raw.githubusercontent.com/andrematiello/setup_project/main/setup.sh | bash -s -- --update
+```
+
+O script vai:
+
+1. Baixar cada template do repositório
+2. Comparar com o arquivo local
+3. **Idêntico ao template** (sem customização) → atualiza automaticamente
+4. **Novo arquivo** (não existia no projeto) → instala automaticamente
+5. **Divergente** (customização local detectada) → registra em `.claude/update-pending.txt`
+
+Ao final, se houver arquivos divergentes, execute no Claude Code:
+
+```text
+/project:update-kit
+```
+
+O agente consolida arquivo por arquivo, classificando cada diferença como aditivo, melhoria, customização local, conflito ou remoção — e só avança com sua aprovação.
+
+> `CLAUDE.md` nunca é substituído automaticamente, em nenhum modo.
+
+---
+
 ## Primeiro uso
 
 Após a instalação, abra o projeto no Claude Code e execute:
