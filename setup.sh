@@ -111,7 +111,7 @@ echo ""
 
 # Baixar skills
 echo "   Baixando skills..."
-SKILLS="code-review security-check update-docs new-migration"
+SKILLS="code-review security-check update-docs new-migration security-audit"
 for skill in $SKILLS; do
   mkdir -p ".claude/skills/$skill"
   download "templates/skills/$skill/SKILL.md" ".claude/skills/$skill/SKILL.md"

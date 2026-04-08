@@ -127,6 +127,19 @@ Todos os arquivos instalados são pontos de partida. Itens marcados com `[ADAPT�
 
 ---
 
+## Skills de segurança: security-check vs security-audit
+
+| | `security-check` | `security-audit` |
+| --- | --- | --- |
+| **Quando** | Durante implementação, ao tocar áreas sensíveis | Sob demanda — "quero saber se minha app é segura" |
+| **Escopo** | Pontual — auth, banco, APIs, env vars | Amplo — arquitetura inteira, CI/CD, infra, dependências |
+| **Output** | Sinais e bloqueios antes de escrever código | Relatório estruturado com riscos, CVSS, OWASP, recomendações |
+| **Analogia** | Guarda de segurança na porta | Auditor que vem fazer uma perícia |
+
+São complementares — `security-check` roda o tempo todo silenciosamente; `security-audit` é invocado explicitamente quando você quer uma análise completa.
+
+---
+
 ## Requisitos
 
 - [Claude Code](https://claude.ai/code) instalado

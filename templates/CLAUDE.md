@@ -6,6 +6,18 @@
 
 ---
 
+## Início Automático de Sessão
+
+**Esta instrução é obrigatória e não requer solicitação do usuário.**
+
+Ao detectar que uma nova sessão se iniciou (primeira mensagem do usuário), execute `/project:start` imediatamente, antes de responder a qualquer outra solicitação.
+
+- Não pergunte se deve executar — apenas execute.
+- Não pule etapas mesmo que a sessão pareça simples.
+- Exceção única: se o usuário iniciar a sessão já com `/project:start`, não duplique.
+
+---
+
 ## Produto
 
 [NOME DO PROJETO] é um [tipo: SaaS / API / ferramenta interna / biblioteca / etc.] que [descrição em uma frase do que faz e para quem].
