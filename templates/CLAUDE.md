@@ -200,3 +200,65 @@ Quando divergirem:
 ## Conclusão de Tarefa
 
 Ao finalizar trabalho com alterações em arquivos ou sistema, execute `/project:done`.
+
+
+---
+
+## Skills Globais Disponíveis
+
+> Lista completa: [`/data/projetos/docs/list_skills.md`](/data/projetos/docs/list_skills.md)
+
+### Processo e fluxo de trabalho
+
+| Skill | Quando usar |
+|-------|-------------|
+| `superpowers:brainstorming` | Antes de qualquer feature, componente ou funcionalidade nova |
+| `superpowers:writing-plans` | Tarefa multi-etapa — escrever spec antes de tocar código |
+| `superpowers:subagent-driven-development` | Tarefas independentes paralelizáveis na sessão atual |
+| `superpowers:dispatching-parallel-agents` | 2+ tarefas independentes que podem rodar em paralelo |
+| `superpowers:systematic-debugging` | Qualquer bug, falha de teste ou comportamento inesperado |
+| `superpowers:test-driven-development` | Implementar features ou bugfixes (TDD) |
+| `superpowers:verification-before-completion` | Antes de declarar concluído, commitar ou criar PR |
+| `superpowers:finishing-a-development-branch` | Implementação completa, decidindo como integrar |
+| `superpowers:using-git-worktrees` | Feature que precisa de isolamento do workspace atual |
+
+### Git
+
+| Comando | Descrição |
+|---------|-----------|
+| `/commit` | Cria commit (staged + mensagem) |
+| `/commit-push-pr` | Commit + push + abre PR no GitHub via `gh` |
+| `/clean_gone` | Remove branches locais marcadas como `[gone]` |
+
+### Frontend / UI
+
+| Skill | Quando usar |
+|-------|-------------|
+| `frontend-design:frontend-design` | Componentes/páginas web com qualidade de produção |
+| `shadcn` | Projetos com shadcn/ui — adicionar componentes, usar CLI `shadcn` |
+| `vercel-react-best-practices` | Performance React/Next.js, data fetching, bundle |
+| `webapp-testing` | Testar UI localmente, screenshots, inspecionar logs do browser |
+
+### Backend / Banco de dados
+
+| Skill | Quando usar |
+|-------|-------------|
+| `supabase:supabase` | Qualquer tarefa Supabase — DB, Auth, Edge Functions, Storage, Realtime |
+| `supabase:supabase-postgres-best-practices` | Escrever, revisar ou otimizar queries e schemas Postgres |
+
+### Web scraping
+
+| Skill | Quando usar |
+|-------|-------------|
+| `firecrawl-search` | Pesquisar na web, descobrir fontes sem URL prévia |
+| `firecrawl-scrape` | Extrair conteúdo de URL específica |
+| `firecrawl-crawl` | Extrair conteúdo de múltiplas páginas de um site |
+
+### Qualidade de código
+
+| Skill / Comando | Quando usar |
+|-----------------|-------------|
+| `andrej-karpathy-skills:karpathy-guidelines` | Escrever, revisar ou refatorar código — evita erros comuns de LLM |
+| `/code-review` | Revisar pull request via `gh pr` |
+| `simplify` | Cleanup do código alterado (reutilização, eficiência) |
+| `/security-review` | Revisão de segurança das mudanças no branch atual |
